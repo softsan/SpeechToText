@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="SpeechToText.SignInPage">
+	<ContentPage.Content>
+	<Grid Padding="20">
+			<Grid.RowDefinitions>
+			 <RowDefinition Height="100"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<Label Text="Sign in" HorizontalTextAlignment="Center" Grid.Row="0" />
+
+			<Grid Grid.Row="1">
+				<Grid.RowDefinitions>
+			 		<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+			<Entry Placeholder="Your email" Keyboard="Email" Text="{Binding UserName}" Grid.Row="0"/>
+			<Entry Placeholder="Password" IsPassword="true"  Text="{Binding Password}" Grid.Row="1"/>
+			<Button 
+					Grid.Row="2"
+					Text="Sign in" 
+				 	WidthRequest="200"
+					VerticalOptions="CenterAndExpand" 
+					HorizontalOptions="CenterAndExpand" 
+					Clicked="OnSignIn"/>
+				<Button 
+					Grid.Row="3"
+					Text="Sign up" 
+				 	WidthRequest="200"
+					VerticalOptions="CenterAndExpand" 
+					HorizontalOptions="CenterAndExpand"
+					Clicked ="OnSignUp"/>
+			</Grid>
+			<Grid IsVisible="{Binding IsBusy}">
+				<ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" />
+			</Grid>
+		</Grid>
+		
+	</ContentPage.Content>
+</ContentPage>

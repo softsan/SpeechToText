@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SpeechToText.App">
+	<Application.Resources>
+		<!-- Application resource dictionary -->
+		 <ResourceDictionary>
+		<!-- Application resource dictionary -->
+		 <x:Double x:Key="BaseFontSize">16</x:Double>
+        <!--  Apple recommends 44x44px tap regions, but 40 is usually ok. TODO: remove dup. instance in UXConsts  -->
+        <x:Double x:Key="BaseButtonHeight">40</x:Double>
+		<Color x:Key="PageBackroundColor">#ffffff</Color>
+		<Style TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
+
+                <!--
+                    Mimic Android Buttons background color
+                    If no background color is set,
+                    the button won't render with height as specified here
+                -->
+                <Setter Property="BackgroundColor">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="Color"
+                            Android="Transparent" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+			</ResourceDictionary>
+	</Application.Resources>
+</Application>

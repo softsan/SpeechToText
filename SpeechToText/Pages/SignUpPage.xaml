@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SpeechToText.SignUpPage">
+	<ContentPage.Content>
+		<Grid Padding="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Label Text ="Sign Up" Grid.Row="0" HorizontalOptions="FillAndExpand"/>
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="40"/>
+		</Grid.RowDefinitions>	 
+			<Entry 
+					Grid.Row="0"
+					Text="{Binding UserName}"
+					Placeholder="Your Email"
+					Keyboard ="Email"/>
+			<Entry 
+					Grid.Row="1"
+					Text="{Binding Password}"
+					Placeholder="Password"
+					IsPassword="true"/>
+
+			<Entry 
+					Grid.Row="2"
+					Text="{Binding FullName}"
+					Placeholder="Full Name" />
+			<Entry 
+					Grid.Row="3"
+					Text="{Binding City}"
+					Placeholder="City" />
+
+			<Picker 
+					Grid.Row="4"
+					Title="Select Language" 
+					SelectedIndexChanged="OnLanguage_SelectedIndexChanged">
+				<Picker.Items>
+	            	<x:String>English</x:String> 
+	            	<x:String>German</x:String>
+	        	</Picker.Items>
+			</Picker>
+	 
+		<Grid Grid.Row="5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
+			</Grid.RowDefinitions>
+
+			<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="20"/>
+				</Grid.ColumnDefinitions>
+					
+			<Label  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+					Text="Secret Sentence" />
+			<Label Grid.Row="1"
+					Grid.Column="0"
+					Grid.ColumnSpan="2"
+					HorizontalOptions="FillAndExpand"
+					Text="Please provide your secret sentence by tapping on microphone icon. (Once you finished speaking, it will translate to Text and display in below box)" 
+					LineBreakMode="WordWrap" 
+					FontSize="10"/>
+
+
+			
+				<Entry 
+						Grid.Row="2"
+						Grid.Column="0"
+						Placeholder="Provide your secret sentence"
+						Text="{Binding SecretSentence}"
+						HorizontalOptions="FillAndExpand"/>
+				<Button Grid.Row="2"
+						Grid.Column="1"
+						Image="record.png"
+						Clicked ="OnSecretSentence"/>
+				<Entry 
+						Grid.Row="3"
+						Grid.Column="0"
+						Placeholder="Confirm your secret sentence"
+						Text="{Binding ConfirmSecretSentence}"
+						HorizontalOptions="FillAndExpand"/>
+
+				<Button Grid.Row="3"
+						Grid.Column="1"
+						Image="record.png"
+						Clicked ="OnConfirmSecretSentence"/>
+		
+		</Grid>
+
+		<Button 
+				Grid.Row="6"
+				Text="Sign up"
+				HorizontalOptions="CenterAndExpand"
+				VerticalOptions="CenterAndExpand"
+				Clicked="OnSignUp"/>
+			
+		</Grid>
+		<Grid IsVisible="{Binding IsBusy}">
+				<ActivityIndicator HorizontalOptions="Center" IsRunning="{Binding IsBusy}" />
+			</Grid>
+	</Grid>
+	</ContentPage.Content>
+</ContentPage>
